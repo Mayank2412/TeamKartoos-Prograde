@@ -26,7 +26,10 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-mongoose.connect("mongodb://localhost:27017/userDB",{useNewUrlParser:true, useUnifiedTopology:true});
+mongoose.Promise = global.Promise;
+mongoose.connect("mongodb://admin-sanyam:sanyam123@cluster0-shard-00-00.rdhcy.mongodb.net:27017,cluster0-shard-00-01.rdhcy.mongodb.net:27017,cluster0-shard-00-02.rdhcy.mongodb.net:27017/userDB?ssl=true&replicaSet=atlas-qm0kh3-shard-0&authSource=admin&retryWrites=true&w=majority",{useNewUrlParser:true , useUnifiedTopology: true})
+.then(() => console.log('MongoDb Connected...'))
+.catch((err) => console.log(err));
 
 mongoose.set("useCreateIndex",true);
 
@@ -42,7 +45,6 @@ const userSchema = new mongoose.Schema({
    hobbies:[String]
 });
 
-const demoUser = "Nagu123";
 
 userSchema.plugin(passportLocalMongoose);
 userSchema.plugin(findOrCreate);
@@ -72,9 +74,18 @@ app.get("/register",function(req,res){
   res.render("register");
 }); 
 
-app.get("/myProfile",function(req,res){
+app.get("/hobbies",function(req,res){
+  res.render("hobbies");
+}); 
 
-  User.findOne({username: demoUser }, function(err,foundUser){
+app.get("/connect",function(req,res){
+  res.render("connect");
+}); 
+
+
+
+app.get("/myProfile",function(req,res){
+  User.findById(req.user.id, function(err,foundUser){
       if(err){
         console.log(err);
       }else{
@@ -119,6 +130,27 @@ app.post("/editProfile",function(req,res){
         foundUser.save(function(){
            res.redirect("/myProfile");
         });
+      }
+    }
+  });
+});
+
+app.post("/connect",function(req,res){
+
+  const searchedUser = req.body.searchedUser;
+  
+
+  User.findOne({username: searchedUser },function(err, foundUser){
+    if(err){
+      console.log(err);
+    }else{
+      if(!foundUser){
+         res.send("User not found!");
+      }else{
+        
+        res.render("searchedUserProfile", {nameOfUser: foundUser.name, emailOfUser : foundUser.email , phoneOfUser: foundUser.phone, usernameOfUser: foundUser.username,
+          bioOfUser: req.body.bio});
+        
       }
     }
   });
@@ -224,7 +256,7 @@ app.get("/dashboard",function(req,res){
 
 app.post("/login",function(req,res){
       const user = new User({
-        email: req.body.email,
+        username: req.body.username,
         password: req.body.password
       });
 
@@ -241,6 +273,56 @@ app.post("/login",function(req,res){
 
 });
     
+
+// app.get("/hobbies/:customHobbies",function(req,res){
+//   const customHobbies = (req.params.customHobbies);
+
+  
+//         res.render(customHobbies);
+      
+    
+//   });
+// HOBBIES PAGES-----------------------------
+
+app.get("/events",function(req,res){
+  res.render("events");
+});
+app.get("/hobbies-calligraphy",function(req,res){
+          res.render("hobbies-calligraphy");
+    });
+app.get("/hobbies-chess",function(req,res){
+      res.render("hobbies-chess");
+});
+app.get("/hobbies-dance",function(req,res){
+  res.render("hobbies-dance");
+});
+app.get("/hobbies-defence",function(req,res){
+  res.render("hobbies-defence");
+});
+app.get("/hobbies-drawing",function(req,res){
+  res.render("hobbies-drawing");
+});
+app.get("/hobbies-gourmet",function(req,res){
+  res.render("hobbies-gourmet");
+});
+app.get("/hobbies-improv",function(req,res){
+  res.render("hobbies-improv");
+});
+app.get("/hobbies-photography",function(req,res){
+res.render("hobbies-photography");
+});
+app.get("/hobbies-sound",function(req,res){
+res.render("hobbies-sound");
+});
+app.get("/hobbies-travel",function(req,res){
+res.render("hobbies-travel");
+});
+app.get("/hobbies-woodworking",function(req,res){
+res.render("hobbies-woodworking");
+});
+app.get("/hobbies-writing",function(req,res){
+res.render("hobbies-writing");
+});
 
 app.get("/logout",function(req,res){
       req.logout();
