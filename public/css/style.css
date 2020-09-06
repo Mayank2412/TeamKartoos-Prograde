@@ -100,8 +100,8 @@
  .parallax-seven { background: url('../img/background/overlay.png'), url('../img/promo/p7.jpg') fixed 50%;}
  .parallax-eight { background: url('../img/background/overlay.png'), url('../img/promo/p8.jpg') fixed 50%;}
  .parallax-nine { background: url('../img/background/overlay.png'), url('../img/promo/p9.jpg') fixed 50%;}
- .parallax-ten { background: url('../img/background/overlay.png'), url('../img/background/redeem.jpg') fixed 50%;}
- .parallax-eleven { background: url('../img/background/overlay.png'), url('../img/background/friends.jpg') fixed 50%;}
+ .parallax-ten { background: url('../img/background/overlay.png'), url('../img/background/p10.jpg') fixed 50%;}
+ .parallax-eleven { background: url('../img/background/overlay.png'), url('../img/background/leaderboard.jpg') fixed 50%;}
  /* 
   * Basic CSS ends 
   */

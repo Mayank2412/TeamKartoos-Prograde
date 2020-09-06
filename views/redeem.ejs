@@ -24,7 +24,7 @@
 		<link rel="shortcut icon" href="img/logo/favicon.ico">
 	</head>
 	
-	<body>
+	<body style="color: black;overflow: hidden">
 		<!-- wrapper -->
 		<div class="wrapper" id="home">
 		
@@ -62,23 +62,59 @@
 				</nav>
 			</header>
 			<!--/ header end -->
-			<div class="cta parallax-ten pad" >
-			<div class="nav-animate"></div>
-				<div class="container">
-					<!-- cta element -->
-					<div class="default-heading" style="padding-top: 10%">
-					<h2 style="font-size: 90px; color: white;">Redeem</h2>
-					</div>	
-				</div>
-			</div>
-			<!--/ cta end -->
-			</header> 
-
-		
-			
-				
+		<!--/ cta end -->
+		</header> <div>
+		<img src="img/promo/p10.jpg"style="height: 100%;width: auto;">
+				<!-- cta element -->
+			<div class="default-heading" style="position: absolute;top: 25%;left:20%;right: 20%">
+				<h2 style="font-size: 90px;">Redeem</h2>
+			</div>	
 		</div>
-		
+		<div style="position: absolute;top: 55%;width: 100%;left:30%;right: 20%">
+		<div id="master" style="border: 2px solid #f23030;width: 40%;padding:3px;">
+			<div ><p class="p" style="font-size: 22px">Type:</p></div>
+			<div ><select name="favourite_sport" size="1" style="margin-left:66%;width: 180px">
+				<option value="select">--SELECT--</option>
+				<option value="Food">Food</option>
+				<option value="Fashion">Fashion</option>
+				<option value="Accessories">Accessories</option>
+				<option value="Travel">Travel</option>				
+				<option value="Cash">Cash</option>
+			</select>
+			</div>
+			<div><p id="code" style="font-size: 22px">Platform:</p></div>
+			<div><select name="favourite_sport" size="1" style="width: 180px;margin-left:66%">
+				<option value="select">--SELECT--</option>
+				<option value="Amazon">Amazon</option>
+				<option value="Flipkart">Flipkart</option>
+				<option value="Ola">Ola</option>
+				<option value="Myntra">Myntra</option>				
+				<option value="Swiggy">Swiggy</option>
+			</select>
+			</div>
+			<div><p id="code" style="font-size: 22px">Amount:</p></div>
+			<div><select name="favourite_sport" size="1" style="margin-left:66%;width: 180px">
+				<option value="select">--SELECT--</option>
+				<option value="500">500</option>
+				<option value="1000">1000</option>
+				<option value="1500">1500</option>
+				<option value="2000">2000</option>				
+			</select>
+			</div>
+			<div id="btn">
+				<div><p id="code" style="font-size: 22px">Are you sure?</p></div>
+				<div style="margin-left: 87%"><button id="1" onclick="myFunction()"class="btn btn-lgn btn-theme">Submit</button></div>
+			</div>
+ 			<script>
+			  function myFunction() {
+  				  alert("Coupon claimed successfully.");
+				  location.reload(true);
+ 			 }
+ 			 </script>
+		</div>
+		</div>
+		</div>
+		</div>
 		<!-- Javascript files -->
 		<!-- jQuery -->
 		<script src="js/jquery.js"></script>
